@@ -7,10 +7,20 @@
  */
 
 const firstNonRepeatedCharacter = (string) => {
-  let data = string;
-  const dataBoard = {}
-
+  const data = string;
+  const dataBoard = {};
   for (let i = 0; i < data.length; i += 1) {
-    dfasdf
+    if (!dataBoard[data[i]]) {
+      dataBoard[data[i]] = 1;
+    } else {
+      dataBoard[data[i]] += 1;
+    }
+  }
+  for (const key in dataBoard) {
+    if (dataBoard[key] === 1) {
+      return key;
+    }
   }
 };
+
+console.log(firstNonRepeatedCharacter('AACBDBC'));
