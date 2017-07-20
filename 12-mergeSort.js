@@ -8,34 +8,39 @@ Repeatedly merge sublists to produce new sorted sublists until there is only 1 s
 */
 
 
-const mergeSort = array => {
-  let result = [];
-  if (array.length < 2) {
-    return array;
-  }
-  const middle = Math.floor(array.length / 2);
-  const left = array.slice(0, middle);
-  const right = array.slice(middle, array.length);
+const mergeSort = (arr) => {
+	const length = arr.length;
+	if(length === 1) {
+		return arr;
+	}
 
-  const merge = (leftSide, rightSide) => {
-    while (leftSide.length && rightSide.length) {
-      if (leftSide[0] >= rightSide[0]) {
-        result.push(rightSide.shift());
-      } else {
-        result.push(leftSide.shift());
-      }
-    }
-    while (leftSide.length || rightSide.length) {
-      if (leftSide.length) {
-        result.push(leftSide.shift());
-      } else {
-        result.push(rightSide.shift());
-      }
-    }
-    return result;
-  };
-  return merge(mergeSort(left), mergeSort(right));
-};
+	const middle = Math.floor(length/2);
+	const left = arr.slice(0, middle);
+	const right = arr.slice(middle, length);
 
-console.log(mergeSort([8, 3, 6, 9, 3, 1, 4, 6, 9]));
-// [ 1, 3, 3, 4, 6, 6, 8, 9, 9 ]
+	return merge(mergeSort(left), mergeSort(right));
+}
+
+const merge = (left, right) => {
+	let result = [];
+	while(left.length && right.length) {
+		if(left[0] > right[0]){
+			result.push(right.shift())
+		} else {
+			result.push(left.shift())
+		}
+	}
+
+	while(left.length) {
+		result.push(left.shift());
+	};
+
+	while(right.length) {
+		result.push(right.shift());
+	};
+
+	return result;
+}
+
+console.log(mergeSort([4,3,2,1,9,8,7,6]))
+// [ 1, 2, 3, 4, 6, 7, 8, 9 ]
