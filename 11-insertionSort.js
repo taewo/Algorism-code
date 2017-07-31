@@ -17,7 +17,7 @@ const insertionSort = (arr) => {
     temp = arr[i];  //  temp에 기준값을 넣고
     while (temp < arr[pivot - 1]) { // 작을때 까지 반복
       arr[pivot] = arr[pivot - 1];  //  한칸씩 뒤로 채우주고
-      pivot--;  //  비교될 요소의 인덱스를 줄여주고
+      pivot -= 1;  //  비교될 요소의 인덱스를 줄여주고
     }
     arr[pivot] = temp;  // while문이 끝났을때 temp를 넣어준다.
   }
