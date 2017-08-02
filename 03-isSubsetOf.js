@@ -23,7 +23,7 @@
 
 Array.prototype.isSubsetOf = function (arr) {
   var objChange = function(obj){
-    for(var i=0; i<obj.length; i++){
+    for (var i=0; i<obj.length; i++){
       if(typeof obj[i] ==='object'){
         obj[i]=JSON.stringify(obj[i]);
       }
