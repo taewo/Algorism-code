@@ -49,6 +49,32 @@ Elements of input arrays can be modified.
 
 */
 
+// This First code is O(N)
+const tapeEquilibrium = (A) => {
+  let sum = 0;
+  let left = 0;
+  let right = 0;
+  let value = 0;
+  let min = 0;
+
+  for (let i = 0; i < A.length; i += 1) {
+    sum += A[i];
+  }
+
+  for (let i = 1; i < A.length; i += 1) {
+    left += A[i - 1];
+    right = sum - left;
+    value = Math.abs(left - right);
+    if (i === 1) {
+      min = value;
+    } else if (min > value) {
+      min = value;
+    }
+  }
+  return min;
+};
+
+
 const tapeEquilibrium = (A) => {
     // write your code in JavaScript (Node.js 6.4.0)
   const obj = {};
@@ -76,5 +102,5 @@ const tapeEquilibrium = (A) => {
   return parseInt(Object.keys(obj)[0]);
 };
 
-console.log(tapeEquilibrium([3, 1, 2, 4, 3]));
+console.log(tapeEquilibrium([3, 4,5,7,9,4,3,2,5,8,1, 2,1,2,3,4,5,3,4,5,6,8,9,9,7,5,3,2, 4, 3]));
 //  => 1
