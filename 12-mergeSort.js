@@ -13,8 +13,6 @@ const mergeSort = (arr) => {
 
 const merge = (left, right) => {
 	const result = [];
-	console.log('left', left);
-	console.log('right', right);
 	while (left.length && right.length) {
 	// if(left.length && right.length){
 		if (left[0] < right[0]) {
