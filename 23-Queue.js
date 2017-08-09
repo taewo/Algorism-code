@@ -43,3 +43,8 @@ class Queue {
     }
   }
 }
+
+const a = new Queue();
+a.enqueue(1);
+a.enqueue(2);
+console.log(a)
